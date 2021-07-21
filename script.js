@@ -1,29 +1,30 @@
 function compute()
 {
     var principal = document.getElementById("principal").value;
+
+    if(principal<=0 || principal==""){
+        alert("Enter a positive number");
+        document.getElementById("principal").focus();
+        return;
+    }
+
     var rate = document.getElementById("rate").value;
     var years = documents.getElementById("years").value;
     var interest = principal*years*rate/100;
 
-    var year = new Date().getFullYear() + parseInt(years);
+    var year = parseInt(new Date().getFullYear()) + parseInt(years);
 
-    document.getElementById("result").innerHTML="If you deposit "+<mark>principal</mark>+",\<br\>at an interest rate of "+<mark>rate</mark>+"%\<br\>You will receive an amount of "+<mark>amount</mark>+",\<br\>in the year "+<mark>year</mark>+"\<br\>"
+    var disply = document.getElementById("result");
+    disply.innerHTML = "If you deposit "+"<span id='cl'>"+ principal +"</span>" + ",<br>at an interest rate of "+ "<span id='cl'>"+ rate +"</span>" + "%<br>You will receive an amount of " + "<span id='cl'>" + interest + "</span>"+",<br> the year "+"<span id='cl'>" + year + "</span>";
     
 }
 
 function updateRate()
 {
-    var rateval= document.getElementById("rate").value;
-    document.getElementById("rate_val").innerText = rateval;
+
+    var slider = document.getElementById("rate");
+    var out = document.getElementById("rate_val");
+    out.innerHTML = slider.value;
 
 }
 
-function error()
-{
-    var val = document.getElementById("principal").value;
-
-    if(val<=0){
-        alert("Enter a positive number");
-    }
-} 
-        
